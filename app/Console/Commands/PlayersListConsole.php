@@ -11,7 +11,7 @@ class PlayersListConsole extends Command
      *
      * @var string
      */
-    protected $signature = 'players:list {limit=5}';
+    protected $signature = 'players:list {limit=5} {--admin}';
 
     /**
      * The console command description.
@@ -38,8 +38,22 @@ class PlayersListConsole extends Command
     public function handle()
     {
         $limit = $this->argument('limit');
-        $players = \App\Player::limit($limit)->get();
-        $headers = ['No.', 'Player Name', 'Game Name', 'MMR', 'Nation', 'Winrate'];
+        $admin = $this->option('admin');
+       
+        if ($admin) {
+            $password = $this->secret('Please enter your password');
+            if ($password = '123456') {
+                $players = \App\Player::limit($limit)->get();
+                $headers = ['No.', 'Player Name', 'Game Name', 'MMR', 'Nation', 'Winrate'];
+            } else {
+                $this->info('Your password is incorrect');
+                exit;
+            }
+        } else {
+            $players = \App\Player::select('GameName' ,'MMR')->limit($limit)->get();
+            $headers = ['Game Name', 'MMR'];
+        }
+
         
         $this->table($headers, $players);
     }
