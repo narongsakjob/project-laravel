@@ -11,7 +11,7 @@ class PlayersListConsole extends Command
      *
      * @var string
      */
-    protected $signature = 'players:list';
+    protected $signature = 'players:list {limit=5}';
 
     /**
      * The console command description.
@@ -37,6 +37,10 @@ class PlayersListConsole extends Command
      */
     public function handle()
     {
-        $this->info('Hello Players'); 
+        $limit = $this->argument('limit');
+        $players = \App\Player::limit($limit)->get();
+        $headers = ['No.', 'Player Name', 'Game Name', 'MMR', 'Nation', 'Winrate'];
+        
+        $this->table($headers, $players);
     }
 }
