@@ -11,14 +11,14 @@ class PlayersListConsole extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'players:list';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'List Player of System';
 
     /**
      * Create a new command instance.
@@ -37,6 +37,6 @@ class PlayersListConsole extends Command
      */
     public function handle()
     {
-        //
+        $this->info('Hello Players'); 
     }
 }
