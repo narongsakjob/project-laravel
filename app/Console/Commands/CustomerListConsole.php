@@ -44,7 +44,7 @@ class CustomerListConsole extends Command
             $password = $this->secret('Please enter your password');
             if ($password = '123456') {
                 $customers = \App\Customer::limit($limit)->get();
-                $headers = ['ID.', 'Name', 'E-mail', 'remember_token', 'created_at', 'updated_at'];
+                $headers = ['ID.', 'Name', 'E-mail', 'created_at', 'updated_at'];
             } else {
                 $this->info('Your password is incorrect');
                 exit;
