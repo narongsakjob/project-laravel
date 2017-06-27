@@ -23,5 +23,5 @@ Route::get('/plus/{num1?}/{num2?}', function ($num1=0, $num2=0) {
     echo $num1. ' + ' .$num2. ' = '.($num1+$num2);
 });
 Route::get('/test-layout', function() {
-    return view('site.layout');
+    return view('layout');
 });

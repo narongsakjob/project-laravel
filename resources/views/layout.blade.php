@@ -24,7 +24,7 @@
     </header>
     <body>
         <header>header</header>
-        <section id="main">Main</section>
+        <section id="main"> @yield('content') </section>
         <footer>footer</footer>
     </body>
 </html>
