@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Blog;
 
 class BlogController extends Controller
 {
@@ -16,7 +17,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $obj = new Blog();
+        $obj->topic  = 'Test123';
+        $obj->content = 'Hello';
+        $obj->user_id = 1;
+        $obj->save();
     }
 
     /**
