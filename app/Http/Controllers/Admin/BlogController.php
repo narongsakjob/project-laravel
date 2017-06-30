@@ -17,14 +17,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        // $obj = new Blog();
-        // $obj->topic  = 'Test123';
-        // $obj->content = 'Hello';
-        // $obj->user_id = 1;
-        // $obj->save();
-
         $objs = Blog::all();
-        // var_dump($objs);
         dd($objs);
     }
 
@@ -46,7 +39,11 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $obj = new Blog();
+        $obj->topic  = $request['topic'];
+        $obj->content = $request['content'];
+        $obj->user_id = 1;
+        $obj->save();
     }
 
     /**
@@ -57,7 +54,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $obj = Blog::find($id);
+        //load view
     }
 
     /**
@@ -68,7 +66,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $obj = Blog::find($id);
     }
 
     /**
@@ -80,7 +78,11 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $obj = Blog::find($id);
+        $obj->topic  = $request['topic'];
+        $obj->content = $request['content'];
+        $obj->user_id = 1;
+        $obj->save();
     }
 
     /**
@@ -91,6 +93,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $obj = Blog::find($id);
+        $obj->delete();
     }
 }
