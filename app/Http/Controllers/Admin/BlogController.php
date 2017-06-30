@@ -17,11 +17,15 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $obj = new Blog();
-        $obj->topic  = 'Test123';
-        $obj->content = 'Hello';
-        $obj->user_id = 1;
-        $obj->save();
+        // $obj = new Blog();
+        // $obj->topic  = 'Test123';
+        // $obj->content = 'Hello';
+        // $obj->user_id = 1;
+        // $obj->save();
+
+        $objs = Blog::all();
+        // var_dump($objs);
+        dd($objs);
     }
 
     /**
