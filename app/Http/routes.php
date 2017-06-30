@@ -12,8 +12,4 @@
 */
 
 Route::get('/', 'BlogController@index');
-// Route::get('/about', function () {
-//     $data['first_name'] = 'Narongsak';
-//     $data['last_name'] = 'Chobsri';
-//     return view('index', $data);
-// });
+Route::resource('admin/blog', 'Admin\BlogController');
