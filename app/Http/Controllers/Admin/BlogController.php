@@ -71,6 +71,8 @@ class BlogController extends Controller
     public function edit($id)
     {
         $obj = Blog::find($id);
+        $data['method'] = "put";
+        return view('admin.form.blog', $data);
     }
 
     /**

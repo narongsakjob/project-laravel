@@ -15,6 +15,7 @@
             <td>{{$row->id}}</td>
             <td>{{$row->topic}}</td>
             <td>
+              <a href="{{url('admin/blog/'.$row->id.'/edit')}}">EDIT</a>
               <form action="{{url('admin/blog/'.$row->id)}}" method="post" onsubmit="return(confirm('Do you want to delete this ?'))">
                 {{ method_field('DELETE')}}
                 {{ csrf_field() }}
