@@ -30,6 +30,7 @@ class BlogController extends Controller
     public function create()
     {
         $data['method'] = "post";
+        $data['url'] = url('admin/blog/');
         return view('admin.form.blog', $data);
     }
 
@@ -46,7 +47,6 @@ class BlogController extends Controller
         $obj->content = $request['content'];
         $obj->user_id = 1;
         $obj->save();
-
         return redirect(url('admin/blog')); 
     }
 
@@ -71,7 +71,9 @@ class BlogController extends Controller
     public function edit($id)
     {
         $obj = Blog::find($id);
+        $data['url'] = url('admin/blog/'.$id);
         $data['method'] = "put";
+        $data['obj'] = $obj;
         return view('admin.form.blog', $data);
     }
 
@@ -89,6 +91,7 @@ class BlogController extends Controller
         $obj->content = $request['content'];
         $obj->user_id = 1;
         $obj->save();
+        return redirect(url('admin/blog')); 
     }
 
     /**
