@@ -18,7 +18,8 @@ class BlogController extends Controller
     public function index()
     {
         $objs = Blog::all();
-        dd($objs);
+        $data['objs'] = $objs;
+        return view('admin.list.blog',$data);
     }
 
     /**
@@ -28,7 +29,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        $data['method'] = "post";
+        return view('admin.form.blog', $data);
     }
 
     /**
@@ -44,6 +46,8 @@ class BlogController extends Controller
         $obj->content = $request['content'];
         $obj->user_id = 1;
         $obj->save();
+
+        return redirect(url('admin/blog')); 
     }
 
     /**
